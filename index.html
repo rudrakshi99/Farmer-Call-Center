@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename= 'css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="#">
+    <title>Send message</title>
+</head>
+<br>
+<br>
+<br>
+<body class="text-center">
+
+
+    {%with messages = get_flashed_messages()%}
+    {%if messages%}
+    {%for message in messages%}
+  
+        <div class="text-center alert alert-danger alert-dismissible fade show" role="alert">
+        <h5>{{message}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+      
+    
+
+        <div class="container bg-light">
+            <div class="row d-lg-inline-flex">
+                <div class="card bg-light">
+                    <div class="row">
+                      
+                          
+                      <div class="card bg-light">
+                        <br>
+                        <div class="text-center">
+                          <h3>Geeks On Fire</h3>
+                        </div>
+                        <br>
+
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                          Hello! enter your phone and ask you question.
+                        </div>
+
+
+                                <div class="form-group ">
+                                  <form method = "POST" action="{{ url_for('find_response')}}">
+                                
+                                    <div class="form-floating">
+                                        <input class="form-control" name="number" required id="floatingInput" placeholder="Number">
+                                        <label for="floatingInput">Phone</label>
+                                    </div>
+
+                                    <p></p>
+
+
+                                    <div class="form-floating">
+                                      <input class="form-control" type="text" name="message" aria-label="With textarea" style="height: 93px;" id="floatingInput" required placeholder="Question">
+                                      <label for="floatingInput">Question</label>
+                                    </div>
+          
+                                        
+                                        
+                                        <br>
+                                        <input  type="submit" value="Send" title="Send" class="btn btn-primary"/>
+                                        <br>
+
+
+                                        
+                                        <br>
+
+
+  
+
+                                        <p class="mt-5 mb-3">Geeks On Fire &copy; 2022</p>
+                                  </form>
+                                </div>
+                            </div>
+                        
+                      </div>
+                </div>
+            </div>
+        </div>
+        
+    <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="static/js/bootstrap.min.js.map"></script>
+
+    <script type="text/javascript" src="static/js/jquery-3.6.0.min.js"></script>
+    
+    <script type="text/javascript" src="static/js/jquery-3.6.0.js"></script>
+    
+    <script type="text/javascript" src="static/js/jquery-3.6.0.slim.min.js"></script>
+
+    
+    
+</body>
+<p></p>
+
+</html>
