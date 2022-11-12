@@ -1,6 +1,13 @@
+# tensorflow
+numpy
 transformers
 bert-extractive-summarizer
 spacy
-tensorflow
 googletrans
 google-search-results
+pandas
+Flask
+scikit-learn
+requests
+Pillow
+gunicorn == 20.0.4

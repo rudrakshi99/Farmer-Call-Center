@@ -1,7 +1,7 @@
 from googletrans import Translator
 from serpapi import GoogleSearch
 
-api_key = "YOUR_API_KEY"
+api_key = "7b524a836388776ada58e38ae837281d7486f2b7e29348d6f97d071afe3e9ccc"
 
 
 def search_and_translate(query, lang):
@@ -14,6 +14,9 @@ def search_and_translate(query, lang):
     }
     search = GoogleSearch(search_params)
     results = search.get_dict()
+    print('Result...........................Start')
+    print(results)
+    print('Result...........................End')
     try:
         answers = (results['knowledge_graph']['answer_box']['answer'])
     except Exception:
