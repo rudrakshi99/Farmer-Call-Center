@@ -9,3 +9,7 @@ googletrans==3.0.0
 sentencepiece==0.1.97
 beautifulsoup4==4.11.1
 selenium==4.6.0
+tensorflow==2.10.0
+torch==1.13.0
+torchvision==0.14.0
+# pip install torch torchvision -f https://download.pytorch.org/whl/torch_stable.html
