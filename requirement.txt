@@ -7,3 +7,5 @@ bert-extractive-summarizer
 spacy
 googletrans
 sentencepiece
+beautifulsoup4
+selenium
