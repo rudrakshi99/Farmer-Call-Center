@@ -1,10 +1,11 @@
-from flask import Flask
+from flask import Flask, request
 from flask_mysqldb import MySQL
 from twilio.rest import Client
 
-from utils import response_payload
-
 from config import config
+from farmers_log.search_user_request import search_log
+from farmers_log.summarize_log import xlnet_summarizer
+from utils import response_payload
 
 app = Flask(__name__)
 
@@ -19,6 +20,21 @@ conexion = MySQL(app)
 # Cultivation
 # Harvest
 
+@app.route("/test", methods = ["GET"])
+def test():
+    return response_payload(True, "Hello World")
+
+@app.route("/farmers-log", methods = ["POST"])
+def farmers_log():
+    data = request.get_json()
+    if not data:
+        return response_payload(False, msg="No data provided")
+    log = data.get("log")
+    if not log:
+        return response_payload(False, msg="No log provided")
+    summary = xlnet_summarizer(log)
+    search_result = search_log(summary)
+    return response_payload(True,search_result, "Success search")
 
 @app.route("/find_response/<phone_number>/<message_body>", methods=["GET", "POST"])
 def find_response(phone_number, message_body):
