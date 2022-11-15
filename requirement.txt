@@ -1,0 +1,9 @@
+twilio
+flask
+flask_mysqldb
+google-search-results
+transformers
+bert-extractive-summarizer
+spacy
+googletrans
+sentencepiece
