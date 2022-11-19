@@ -26,14 +26,16 @@ def test():
 
 @app.route("/farmers-log", methods = ["POST"])
 def farmers_log():
-    data = request.get_json()
+    try:
+        data = request.get_json()
+    except Exception:
+        response_payload(False, msg="Request body could not be found")
     if not data:
         return response_payload(False, msg="No data provided")
     log = data.get("log")
     if not log:
         return response_payload(False, msg="No log provided")
-    summary = xlnet_summarizer(log)
-    search_result = search_log(summary)
+    search_result = search_log(log)
     return response_payload(True,search_result, "Success search")
 
 @app.route("/find_response/<phone_number>/<message_body>", methods=["GET", "POST"])

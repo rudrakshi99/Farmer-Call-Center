@@ -21,37 +21,28 @@ def search_log(query):
             "organic_result_1": {
                'title': results["organic_results"][0]["title"],
                 'link': results["organic_results"][0]["link"],
-                'description': results["organic_results"][0]["snippet"],
-                'response': xlnet_summarizer(scrape_website(results["organic_results"][0]["link"])),
-                'source_description': results["organic_results"][0]['about_this_result']["source"]['description'],
+                'response': scrape_website(results["organic_results"][0]["link"]),
             },
             "organic_result_2": {
                'title': results["organic_results"][1]["title"],
                 'link': results["organic_results"][1]["link"],
-                'description': results["organic_results"][1]["snippet"],
-                'response': xlnet_summarizer(scrape_website(results["organic_results"][1]["link"])),
-                'source_description': results["organic_results"][1]['about_this_result']["source"]['description'],
+                'response': scrape_website(results["organic_results"][1]["link"]),
             },
             "organic_result_3": {
                'title': results["organic_results"][2]["title"],
                 'link': results["organic_results"][2]["link"],
-                'description': results["organic_results"][2]["snippet"],
-                'response': xlnet_summarizer(scrape_website(results["organic_results"][2]["link"])),
-                'source_description': results["organic_results"][2]['about_this_result']["source"]['description'],
+                'response':scrape_website(results["organic_results"][2]["link"]),
             },
             "organic_result_4": {
                 'title': results["organic_results"][3]["title"],
                 'link': results["organic_results"][3]["link"],
                 'description': results["organic_results"][3]["snippet"],
-                'response': xlnet_summarizer(scrape_website(results["organic_results"][3]["link"])),
-                'source_description': results["organic_results"][3]['about_this_result']["source"]['description'],
+                'response': scrape_website(results["organic_results"][3]["link"]),
             },
             "organic_result_5": {
                 'title': results["organic_results"][4]["title"],
                 'link': results["organic_results"][4]["link"],
-                'description': results["organic_results"][4]["snippet"],
-                'response': xlnet_summarizer(scrape_website(results["organic_results"][4]["link"])),
-                'source_description': results["organic_results"][4]['about_this_result']["source"]['description'],
+                'response': scrape_website(results["organic_results"][4]["link"]),
             },
         }
     except Exception:
