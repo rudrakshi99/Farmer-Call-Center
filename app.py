@@ -1,5 +1,4 @@
 from flask import Flask, jsonify, request,Markup
-from flask_mysqldb import MySQL
 from twilio.rest import Client
 from crop_recommendation.corp_prediction import recommend_crop
 import boto3 
@@ -27,7 +26,6 @@ from config import config, ACCESS_KEY_ID, ACCESS_SECRET_KEY, BUCKET_NAME
 
 app = Flask(__name__)
 
-conexion = MySQL(app)
 
 
 #The thelephone number associated whit the twilio account is: 
@@ -43,14 +41,17 @@ def test():
     return response_payload(True, "Hello World")
 
 @app.route("/farmers-log", methods = ["POST"])
-def farmers_log():
-    data, form_valid = check_form_data()
+def farmers_log(query = None,tag = 0):
+    if query == None:
+        data, form_valid = check_form_data()
+    else:
+        data,form_valid = query, 1
     if form_valid == 0:
         return response_payload(False, msg= data)
     log = data.get("log")
     if not log:
         return response_payload(False, msg="No log provided")
-    search_result = search_log(log)
+    search_result = search_log(log,tag)
     return response_payload(True,search_result, "Success search")
 
 
@@ -157,19 +158,17 @@ def predict_fertilizer():
 @app.route('/find_response/<phone_number>/<message_body>', methods=['GET','POST'])
 def find_response(phone_number,message_body):
     try:
-        cursor=conexion.connection.cursor()
-        sql="SELECT content FROM topics WHERE topic_title = '{0}'".format(message_body)
-        cursor.execute(sql)
-        resp=cursor.fetchone()
-        if resp != None:
-            response = resp[0]
+        resp = farmers_log(query = {"log":message_body}, tag = 1)
             
-            
+        if resp["success"] == True :
+            response = resp["data"]["organic_result_1"]["response"]
+            print('Response length', len(response))
             # Convert text to audio
             mytext = response
-            languaje = "es"
+            languaje = "en"#es
             myobj = gTTS(text=mytext, lang=languaje, slow=False)
-            myobj.save("response.mp3")   
+            file_name ="response23.mp3" 
+            myobj.save(file_name)   
             
             # Send the audio in to bucket
             s3 = boto3.resource(
@@ -178,26 +177,33 @@ def find_response(phone_number,message_body):
             aws_secret_access_key = ACCESS_SECRET_KEY,
             config=Config(signature_version='s3v4')
             )
-            data = open('response.mp3', 'rb')
-            s3.Bucket(BUCKET_NAME).put_object(Key='response.mp3', Body=data, ContentType='audio/mp3')      
+            data = open(file_name, 'rb')
+            s3.Bucket(BUCKET_NAME).put_object(Key=file_name, Body=data, ContentType='audio/mp3')      
             
-            s3_url = f"https://{BUCKET_NAME}.s3.{'us-east-1'}.amazonaws.com/{'response.mp3'}"
+            s3_url = f"https://{BUCKET_NAME}.s3.{'us-east-1'}.amazonaws.com/{file_name}"
+            
             
             # Send sms
             def sms_response(phone_number,response, s3_url):
-                account_sid = "ACa14fbcbce98e84a08d6a60bbdebbf18b"
-                auth_token = "9a9bf0f756d4d38fcbb305e252c27f4a"
+                # account_sid = "ACa14fbcbce98e84a08d6a60bbdebbf18b"
+                # auth_token = "9a9bf0f756d4d38fcbb305e252c27f4a"
 
+                account_sid = "AC4e058f23d10e79e14070ecdb92f4336a"
+                auth_token = "47fc3cd1ac62a3b6b6d3cb9598aa45ac"
                 
                 client = Client(account_sid, auth_token)
                 message = client.messages.create(
                     body = response + " " + "Abra el siguiente enlace para escuchar la respuesta " +  s3_url,
-                    from_ = "+19452392171", 
+                    from_ = "+17262271841",#"+19452392171", 
                     to = phone_number        
                 )
+                
             try:
+                print('Sending Message')
                 sms_response(phone_number, response, s3_url)
+                return response_payload(True,'', 'Succesful sent')
             except Exception as ex:
+                print(ex)
                 return jsonify({'message':"Check your internet conection."})
             
                 
