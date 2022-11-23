@@ -23,10 +23,7 @@ result = {
         "specifications": "It is the highest Phosphate (35%) containing complex compared to any other NPK complexes. Entire Nitrogen is available in Ammonical form. 29% out of 35% Phosphate and entire Potash is available in water-soluble form and therefore, easily available to crops. The NPK ratio 1:2.5:1 is a scientific combination for basal application to all crops and all the nutrients are chemically combined and interaction is synergic. It does not contain any filler and it has 100% nutrient containing material having secondary and micro-nutrients such as Sulphur, Calcium, Magnesium and Iron.It is the highest Phosphate (35%) containing complex compared to any other NPK complexes. Entire Nitrogen is available in Ammonical form. 29% out of 35% Phosphate and entire Potash is available in water-soluble form and therefore, easily available to crops. The NPK ratio 1:2.5:1 is a scientific combination for basal application to all crops and all the nutrients are chemically combined and interaction is synergic. It does not contain any filler and it has 100% nutrient containing material having secondary and micro-nutrients such as Sulphur, Calcium, Magnesium and Iron."
     },
     "17-17-17":{
-        "info": '''
-        Contains 17% Nitrogen, 17% P2O5 and 17 % K2O 17:17:17 contains most important primary nutrients Nitrogen, Phosphorous and Potash in equal proportion
-        Single most important source of all major nutrients Granules are stronger, harder and of uniform size
-        ''',
+        "info": "Contains 17% Nitrogen, 17% P2O5 and 17 % K2O 17:17:17 contains most important primary nutrients Nitrogen, Phosphorous and Potash in equal proportion Single most important source of all major nutrients Granules are stronger, harder and of uniform size",
         "application":  {
             "1": "Due to high water solubility, has a greater mobility in the soil",
             "2": "It has good storage properties"

@@ -1,11 +1,11 @@
 from flask import Flask, jsonify, request,Markup
-# from flask_mysqldb import MySQL
+from flask_mysqldb import MySQL
 from twilio.rest import Client
 from crop_recommendation.corp_prediction import recommend_crop
-# import boto3 
-# from botocore.client import Config
+import boto3 
+from botocore.client import Config
 from crop_recommendation.weather import weather_fetch
-# from gtts import gTTS
+from gtts import gTTS
 import pandas as pd
 import os
 from fertilizier_predict.crop_type_encoder import encode_crop_type
@@ -27,7 +27,7 @@ from config import config, ACCESS_KEY_ID, ACCESS_SECRET_KEY, BUCKET_NAME
 
 app = Flask(__name__)
 
-# conexion = MySQL(app)
+conexion = MySQL(app)
 
 
 #The thelephone number associated whit the twilio account is: 
@@ -147,65 +147,65 @@ def predict_fertilizer():
                     "prediction": prediction,
                     "info":generate_fertilizer_report(prediction)
                 }
-            return response_payload(True, recommendation_result, "Success search")
+            return response_payload(True, recommendation_result, "Success prediction")
         else:
             return response_payload(False, 'Please try again') 
         
     except Exception:
         return response_payload(False, msg="Request body is not valid")
 
-# @app.route('/find_response/<phone_number>/<message_body>', methods=['GET','POST'])
-# def find_response(phone_number,message_body):
-#     try:
-#         cursor=conexion.connection.cursor()
-#         sql="SELECT content FROM topics WHERE topic_title = '{0}'".format(message_body)
-#         cursor.execute(sql)
-#         resp=cursor.fetchone()
-#         if resp != None:
-#             response = resp[0]
+@app.route('/find_response/<phone_number>/<message_body>', methods=['GET','POST'])
+def find_response(phone_number,message_body):
+    try:
+        cursor=conexion.connection.cursor()
+        sql="SELECT content FROM topics WHERE topic_title = '{0}'".format(message_body)
+        cursor.execute(sql)
+        resp=cursor.fetchone()
+        if resp != None:
+            response = resp[0]
             
             
-#             # Convert text to audio
-#             mytext = response
-#             languaje = "es"
-#             myobj = gTTS(text=mytext, lang=languaje, slow=False)
-#             myobj.save("response.mp3")   
+            # Convert text to audio
+            mytext = response
+            languaje = "es"
+            myobj = gTTS(text=mytext, lang=languaje, slow=False)
+            myobj.save("response.mp3")   
             
-#             # Send the audio in to bucket
-#             s3 = boto3.resource(
-#             's3',
-#             aws_access_key_id = ACCESS_KEY_ID,
-#             aws_secret_access_key = ACCESS_SECRET_KEY,
-#             config=Config(signature_version='s3v4')
-#             )
-#             data = open('response.mp3', 'rb')
-#             s3.Bucket(BUCKET_NAME).put_object(Key='response.mp3', Body=data, ContentType='audio/mp3')      
+            # Send the audio in to bucket
+            s3 = boto3.resource(
+            's3',
+            aws_access_key_id = ACCESS_KEY_ID,
+            aws_secret_access_key = ACCESS_SECRET_KEY,
+            config=Config(signature_version='s3v4')
+            )
+            data = open('response.mp3', 'rb')
+            s3.Bucket(BUCKET_NAME).put_object(Key='response.mp3', Body=data, ContentType='audio/mp3')      
             
-#             s3_url = f"https://{BUCKET_NAME}.s3.{'us-east-1'}.amazonaws.com/{'response.mp3'}"
+            s3_url = f"https://{BUCKET_NAME}.s3.{'us-east-1'}.amazonaws.com/{'response.mp3'}"
             
-#             # Send sms
-#             def sms_response(phone_number,response, s3_url):
-#                 account_sid = "ACa14fbcbce98e84a08d6a60bbdebbf18b"
-#                 auth_token = "9a9bf0f756d4d38fcbb305e252c27f4a"
+            # Send sms
+            def sms_response(phone_number,response, s3_url):
+                account_sid = "ACa14fbcbce98e84a08d6a60bbdebbf18b"
+                auth_token = "9a9bf0f756d4d38fcbb305e252c27f4a"
 
                 
-#                 client = Client(account_sid, auth_token)
-#                 message = client.messages.create(
-#                     body = response + " " + "Abra el siguiente enlace para escuchar la respuesta " +  s3_url,
-#                     from_ = "+19452392171", 
-#                     to = phone_number        
-#                 )
-#             try:
-#                 sms_response(phone_number, response, s3_url)
-#             except Exception as ex:
-#                 return jsonify({'message':"Check your internet conection."})
+                client = Client(account_sid, auth_token)
+                message = client.messages.create(
+                    body = response + " " + "Abra el siguiente enlace para escuchar la respuesta " +  s3_url,
+                    from_ = "+19452392171", 
+                    to = phone_number        
+                )
+            try:
+                sms_response(phone_number, response, s3_url)
+            except Exception as ex:
+                return jsonify({'message':"Check your internet conection."})
             
                 
-#             return jsonify({ 'Abra el siguiente enlace para escuchar la respuesta': s3_url,  'message':response,'topic':"Topic found."})
-#         else:    
-#             return jsonify({'message':"Topic not found."})
-#     except Exception as ex:
-#         return jsonify({'message':"Error"})
+            return jsonify({ 'Abra el siguiente enlace para escuchar la respuesta': s3_url,  'message':response,'topic':"Topic found."})
+        else:    
+            return jsonify({'message':"Topic not found."})
+    except Exception as ex:
+        return jsonify({'message':"Error"})
         
 
 
