@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../../index.css";
 import { Component } from "react";
-
+import "./body.css";
 class CardBar extends Component {
   render() {
     return <section className="body__section my-10">
@@ -94,7 +94,15 @@ const Body = () => {
   const navigate = useNavigate();
   return (
     <div className="body">
+      <div className="background-image grid place-items-center my-14">
+        <div className="">
+          <p className="text-sm  font-bold text-center text-white uppercase mb-4">Farmers' Help Center</p>
+          <p className="text-3xl font-medium text-center text-green-600 max-w-md mb-4">KRASHAK
+          </p>
+          <p className="text-sm font-bold text-center text-white uppercase">#WeAreFarmers'Voice</p>
 
+        </div>
+        </div>
       <CardBar />
       <HelpCard />
       <section className="flex flex-col mr-5">
