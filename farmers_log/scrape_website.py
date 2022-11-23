@@ -1,16 +1,22 @@
 from bs4 import BeautifulSoup
-from selenium import webdriver
 import requests
 
 
 def scrape_website(url):
-    html_content = requests.get(url).text
-    soup = BeautifulSoup(html_content,'html.parser')
     result = '' 
-    s = soup.find('body')
-    divs = s.find_all('div')
-    for div in divs:
-        texts = div.find_all('p')
-        for text in texts:
-            result += text.getText(separator=u' ')
+    try:
+        html_content = requests.get(url).text
+        soup = BeautifulSoup(html_content,'html.parser')        
+        s = soup.find('body')
+        divs = s.find_all('div')
+        intr = 0
+        for div in divs:
+            if intr < 5  and intr != 0:
+                print('Working', intr)
+                texts = div.find_all('p')
+                for text in texts:
+                    result += text.getText(separator=u' ')
+            intr = intr + 1
+    except Exception:
+        result = None
     return result

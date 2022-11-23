@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request,Markup
 # from flask_mysqldb import MySQL
 from twilio.rest import Client
 from crop_recommendation.corp_prediction import recommend_crop
@@ -6,7 +6,14 @@ from crop_recommendation.corp_prediction import recommend_crop
 # from botocore.client import Config
 from crop_recommendation.weather import weather_fetch
 # from gtts import gTTS
+import pandas as pd
 import os
+from fertilizier_predict.crop_type_encoder import encode_crop_type
+from fertilizier_predict.decode_fertilizer import decode_fertilizer
+from fertilizier_predict.fertilizer_report import generate_fertilizer_report
+from fertilizier_predict.min_max import min_max
+from fertilizier_predict.predict_fertilier import recommend_fertilizer
+from fertilizier_predict.soil_type_encoder import encode_soil_type
 import utils
 import numpy as np
 from config import config
@@ -15,6 +22,7 @@ from farmers_log.summarize_log import xlnet_summarizer
 from utils import response_payload
 import pickle
 from config import config, ACCESS_KEY_ID, ACCESS_SECRET_KEY, BUCKET_NAME
+
 
 
 app = Flask(__name__)
@@ -36,12 +44,9 @@ def test():
 
 @app.route("/farmers-log", methods = ["POST"])
 def farmers_log():
-    try:
-        data = request.get_json()
-    except Exception:
-        response_payload(False, msg="Request body could not be found")
-    if not data:
-        return response_payload(False, msg="No data provided")
+    data, form_valid = check_form_data()
+    if form_valid == 0:
+        return response_payload(False, msg= data)
     log = data.get("log")
     if not log:
         return response_payload(False, msg="No log provided")
@@ -49,16 +54,24 @@ def farmers_log():
     return response_payload(True,search_result, "Success search")
 
 
+def check_form_data():
+    try:
+        data = request.get_json()
+        valid = 1
+    except Exception:
+        data = "Request body could not be found"
+        valid = 0
+    if not data:
+        valid = 0
+        data = "No data provided"
+    return data, valid
 
 
 @app.route('/crop-recommedation', methods = ["POST"])
 def crop_recommedation():
-    try:
-        data = request.get_json()
-    except Exception:
-        response_payload(False, msg="Request body could not be found")
-    if not data:
-        return response_payload(False, msg="No data provided")
+    data, form_valid = check_form_data()
+    if form_valid == 0:
+        return response_payload(False, msg= data)
     
     try:
         N = int(data.get('nitrogen'))
@@ -85,10 +98,61 @@ def crop_recommedation():
         else:
             return response_payload(False, 'Please try again') 
         
+    except Exception:
+        return response_payload(False, msg="Request body is not valid")
+@app.route('/fertilizer-predict', methods = ["POST"])
+def predict_fertilizer():
+    data, form_valid = check_form_data()
+    if form_valid == 0:
+        return response_payload(False, msg= data)
+    
+    try:
+        soil_type = str(data.get('soil-type'))
+        crop_type = str(data.get('crop-type'))
+        moisture = data.get('moisture')
+        N = int(data.get('nitrogen'))
+        P = int(data.get('phosphorous'))
+        K = int(data.get('pottasium'))
+        city = data.get("city")
+
+        try:
+            city_info = weather_fetch(city)
+        except Exception:
+            return response_payload(False, msg="Unable to get the city information. Please try again")
+        
+        encoded_soil_type = encode_soil_type(soil_type)
+        encoded_crop_type = encode_crop_type(crop_type)
+        
+        if(encoded_soil_type == None and encoded_crop_type == None):
+            return response_payload(False, msg="Invalid soil type or crop type")
+        
+        if city_info != None:
+            temperature, humidity = city_info
+            data = np.array([[ temperature , humidity , moisture,encoded_soil_type,encoded_crop_type, N, P, K]])
+            
+            try:
+                data = min_max(data)
+                print('Data ', data)
+            except  Exception as e:
+                print('Error')
+                print(e)
+                
+            try:
+                my_prediction = recommend_fertilizer(data)
+            except  Exception as e:
+                print('Error')
+                print(e)
+            prediction = decode_fertilizer(my_prediction[0])
+            recommendation_result = {
+                    "prediction": prediction,
+                    "info":generate_fertilizer_report(prediction)
+                }
+            return response_payload(True, recommendation_result, "Success search")
+        else:
+            return response_payload(False, 'Please try again') 
         
     except Exception:
         return response_payload(False, msg="Request body is not valid")
-
 
 # @app.route('/find_response/<phone_number>/<message_body>', methods=['GET','POST'])
 # def find_response(phone_number,message_body):
