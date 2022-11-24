@@ -1,13 +1,19 @@
-def generate_fertilizer_report(index):
-    return result[index]
+from localization.translator import translate_text_to_language
+
+
+def generate_fertilizer_report(index, lang):
+    return {
+        "info": translate_text_to_language(result[index]["info"], lang, "en"),
+        "specifications": translate_text_to_language(result[index]["specifications"], lang, "en"),
+        "application": {
+            "1": translate_text_to_language(result[index]["application"]["1"], lang, "en"),
+            "2": translate_text_to_language(result[index]["application"]["2"], lang, "en"),
+        }
+    }
     
 result = {
     "10-26-26":{
-        "info": '''
-        NPK is a DAP based composite fertiliser and is produced at IFFCOs Kandla unit, which apart from NPK 10:26:26 and also produces NPK 10-26-26. NPK 10-26-26 fixes the phosphorus and potassium content in the soil and is highly effective in soils with leaching condition. 
-        The product is granular and comes in moisture resistant HDP bags 
-        allowing easy handling and storage.
-        ''',
+        "info": "NPK is a DAP based composite fertiliser and is produced at IFFCOs Kandla unit, which apart from NPK 10:26:26 and also produces NPK 10-26-26. NPK 10-26-26 fixes the phosphorus and potassium content in the soil and is highly effective in soils with leaching condition.  The product is granular and comes in moisture resistant HDP bags allowing easy handling and storage.",
         "application":  {
             "1": "Used as a complex fertilizer for supply of all three major nutrient like Nitrogen, Phosphorus and Potash.",
             "2": "Used in basal application in crops like Wheat, Paddy, Maize, Pulses, Sugarcane, Vegetables etc."

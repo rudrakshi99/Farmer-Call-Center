@@ -16,6 +16,7 @@ from fertilizier_predict.fertilizer_report import generate_fertilizer_report
 from fertilizier_predict.min_max import min_max
 from fertilizier_predict.predict_fertilier import recommend_fertilizer
 from fertilizier_predict.soil_type_encoder import encode_soil_type
+from localization.translator import translate_text_to_language
 from utils import response_payload
 
 app = Flask(__name__)
@@ -34,8 +35,19 @@ CORS(app)
 def test():
     return response_payload(True, "Hello World")
 
+@app.route("/search/<body>", methods = ["GET"])
+def search(body):
+    body = "solution for "+ body
+    resp = farmers_log(query = {"log":body,  "lang":"en"})
+    response = resp["data"]["organic_result_1"]["response"]
+    if(response == ""):
+        response = "Sorry, we could not find any solution for your problem"
+    return response_payload(True,{
+        "response":response
+    } ,"Working")
+
 @app.route("/farmers-log", methods = ["POST"])
-def farmers_log(query = None,tag = 0):
+def farmers_log(query = None):
     if query == None:
         data, form_valid = check_form_data()
     else:
@@ -43,9 +55,12 @@ def farmers_log(query = None,tag = 0):
     if form_valid == 0:
         return response_payload(False, msg= data)
     log = data.get("log")
+    lang = data.get("lang")
+    if lang == None:
+        lang = "en"
     if not log:
         return response_payload(False, msg="No log provided")
-    search_result = search_log(log,tag)
+    search_result = search_log(log,lang)
     return response_payload(True,search_result, "Success search")
 
 
@@ -75,8 +90,11 @@ def crop_recommedation():
         ph = float(data.get('ph'))
         rainfall = float(data.get('rainfall'))
         city = data.get("city")
+        lang = data.get("lang")
+        if lang == None:
+            lang = "en"
         
-        
+
         try:
             city_info = weather_fetch(city)
         except Exception:
@@ -87,7 +105,7 @@ def crop_recommedation():
             data = np.array([[N, P, K, temperature, humidity, ph, rainfall]])
             my_prediction = recommend_crop(data)
             recommendation_result = {
-                    "prediction": my_prediction[0]
+                    "prediction": translate_text_to_language(my_prediction[0],lang, "en")
                 }
             return response_payload(True, recommendation_result, "Success search")
         else:
@@ -109,7 +127,12 @@ def predict_fertilizer():
         P = int(data.get('phosphorous'))
         K = int(data.get('pottasium'))
         city = data.get("city")
+        lang = data.get("lang")
+        if lang == None:
+            lang = "en"
 
+        soil_type = translate_text_to_language(soil_type, "en", lang)
+        crop_type = translate_text_to_language(crop_type, "en", lang)
         try:
             city_info = weather_fetch(city)
         except Exception:
@@ -140,26 +163,27 @@ def predict_fertilizer():
             prediction = decode_fertilizer(my_prediction[0])
             recommendation_result = {
                     "prediction": prediction,
-                    "info":generate_fertilizer_report(prediction)
+                    "info":  generate_fertilizer_report(prediction, lang)
                 }
             return response_payload(True, recommendation_result, "Success prediction")
         else:
             return response_payload(False, 'Please try again') 
         
-    except Exception:
+    except Exception as e:
+        print(e)
         return response_payload(False, msg="Request body is not valid")
 
-@app.route('/find_response/<phone_number>/<message_body>', methods=['GET','POST'])
-def find_response(phone_number,message_body):
+@app.route('/find_response/<lang>/<phone_number>/<message_body>', methods=['GET','POST'])
+def find_response(lang,phone_number,message_body):
     try:
-        resp = farmers_log(query = {"log":message_body}, tag = 1)
+        resp = farmers_log(query = {"log":message_body, "lang":lang})
             
         if resp["success"] == True :
             response = resp["data"]["organic_result_1"]["response"]
             print('Response length', len(response))
             # Convert text to audio
             mytext = response
-            languaje = "en"#es
+            languaje = lang#"en"#es
             myobj = gTTS(text=mytext, lang=languaje, slow=False)
             file_name ="response23.mp3" 
             myobj.save(file_name)   
@@ -182,13 +206,13 @@ def find_response(phone_number,message_body):
                 # account_sid = "ACa14fbcbce98e84a08d6a60bbdebbf18b"
                 # auth_token = "9a9bf0f756d4d38fcbb305e252c27f4a"
 
-                account_sid = "AC4e058f23d10e79e14070ecdb92f4336a"
-                auth_token = "47fc3cd1ac62a3b6b6d3cb9598aa45ac"
+                account_sid = "AC87dddab50fb1e07d36c39e956715c69a"
+                auth_token = "d5bd5d9456abc43638a2a8ce18aac85c"
                 
                 client = Client(account_sid, auth_token)
                 message = client.messages.create(
                     body = response + " " + "Abra el siguiente enlace para escuchar la respuesta " +  s3_url,
-                    from_ = "+17262271841",#"+19452392171", 
+                    from_ = "+15139607276",#"+19452392171", 
                     to = phone_number        
                 )
                 

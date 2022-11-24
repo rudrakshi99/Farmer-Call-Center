@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def scrape_website(url,tag = 0):
+def scrape_website(url):
     result = '' 
     try:
         html_content = requests.get(url).text
@@ -13,7 +13,7 @@ def scrape_website(url,tag = 0):
         for div in divs:
             texts = div.find_all('p')
             for text in texts:
-                if len(result) < 800 or tag == 0:
+                if len(result) < 800:
                     result += text.getText(separator=u' ')
             
             
