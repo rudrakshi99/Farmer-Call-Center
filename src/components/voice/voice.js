@@ -1,9 +1,10 @@
 import PreHeader from "../preheader/preheader";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import Body from "../body/body";
 import Footer from "../Footer/footer";
-
+import alanBtn from "@alan-ai/alan-sdk-web"
+let alanKey = "67254c6d750a036c9a01ac6ae831c3202e956eca572e1d8b807a3e2338fdd0dc/stage"
 const Voice = () => {
   const [load, setLoad] = useState(false);
   const [log, setLog] = useState("");
@@ -74,7 +75,20 @@ const Voice = () => {
     setLoad(false);
   }
 
+  useEffect(()=> {
+    alanBtn({
+      key:alanKey,
+      onCommand: ({command}) => {
+        if(command === 'testCommand') {
+          console.log('testCommand')
+          alert('This is a Alan AI demo');
+        }
+      }
+    })
+  },[]);
+
   return (
+
     <>
       <PreHeader />
       <Header />
