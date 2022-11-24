@@ -1,31 +1,25 @@
-from flask import Flask, jsonify, request,Markup
-from twilio.rest import Client
-from crop_recommendation.corp_prediction import recommend_crop
-import boto3 
+import boto3
+import numpy as np
 from botocore.client import Config
-from crop_recommendation.weather import weather_fetch
+from flask import Flask, jsonify, request
+from flask_cors import CORS
 from gtts import gTTS
-import pandas as pd
-import os
+from twilio.rest import Client
+
+from config import ACCESS_KEY_ID, ACCESS_SECRET_KEY, BUCKET_NAME, config
+from crop_recommendation.corp_prediction import recommend_crop
+from crop_recommendation.weather import weather_fetch
+from farmers_log.search_user_request import search_log
 from fertilizier_predict.crop_type_encoder import encode_crop_type
 from fertilizier_predict.decode_fertilizer import decode_fertilizer
 from fertilizier_predict.fertilizer_report import generate_fertilizer_report
 from fertilizier_predict.min_max import min_max
 from fertilizier_predict.predict_fertilier import recommend_fertilizer
 from fertilizier_predict.soil_type_encoder import encode_soil_type
-import utils
-import numpy as np
-from config import config
-from farmers_log.search_user_request import search_log
-from farmers_log.summarize_log import xlnet_summarizer
 from utils import response_payload
-import pickle
-from config import config, ACCESS_KEY_ID, ACCESS_SECRET_KEY, BUCKET_NAME
-
-
 
 app = Flask(__name__)
-
+CORS(app)
 
 
 #The thelephone number associated whit the twilio account is: 
@@ -211,6 +205,7 @@ def find_response(phone_number,message_body):
         else:    
             return jsonify({'message':"Topic not found."})
     except Exception as ex:
+        print(ex)
         return jsonify({'message':"Error"})
         
 
