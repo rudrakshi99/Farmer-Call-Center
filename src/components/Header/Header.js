@@ -28,21 +28,21 @@ const Header = () => {
             </li>
             <li
               className="text-lg cursor-pointer font-semibold text-[#219653] hover:opacity-90 ml-6 mr-1.5"
-              onClick={() => navigate("/dashboard")}
+              onClick={() => navigate("/voice")}
             >
               Voice Help
             </li>
             <li
               className="text-lg cursor-pointer font-semibold text-[#219653] hover:opacity-90 ml-6 mr-1.5"
-              onClick={() => navigate("/addProduct")}
+              onClick={() => navigate("/crop")}
             >
-              Services
+              Crop Recommendation
             </li>
             <li
-              onClick={() => navigate("/help")}
+              onClick={() => navigate("/fertilizer")}
               className="text-lg cursor-pointer font-semibold text-[#219653] hover:opacity-90 ml-6 mr-1.5"
             >
-              News
+              Fertilizer Recommendation
             </li>
           </ul>
         </div>

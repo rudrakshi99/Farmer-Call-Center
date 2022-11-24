@@ -16,6 +16,7 @@ const Fertilizer = () => {
   const [information, setInformation] = useState("");
   const [application, setApplication] = useState("");
   const [specification, setSpecification] = useState("");
+  const [lang, setLang] = useState("en");
  function onSearchSubmit(term) {
     setLoad(true);
     console.log("Clicked");
@@ -28,6 +29,7 @@ const Fertilizer = () => {
       "phosphorous": parseFloat (phosphorus),
       "pottasium": parseFloat (potassium),
       "city": city,
+      "lang":lang
     });
     console.log("body", body);
     try{
@@ -69,6 +71,33 @@ const Fertilizer = () => {
         <div className="grid place-items-center my-14  ">
           <div className="container bg-gray-100 p-10 grid place-items-center mt-14  ">
             <p className="text-2xl font-medium text-green-600 my-12">Predict the Fertilizer for your crop<br /></p>
+
+            <div className="flex flex-row space-x-3 my-10">
+              <div>
+                Please select a Language, default language is English
+              </div>
+              <div className="ml-16 ">
+                <button
+                  onClick={() => setLang("en")}
+                  type="button"
+                  className="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">English
+                </button>
+              </div>
+              <div className="ml-16">
+                <button
+                  onClick={() => setLang("hi")}
+                  type="button"
+                  className="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Hindi
+                </button>
+              </div>
+              <div className="ml-16 ">
+                <button
+                  onClick={() => setLang("es")}
+                  type="button"
+                  className="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Spanish
+                </button>
+              </div>
+            </div>
 
             <input onChange={(e)=> setSoilType(e.target.value)} className="w-3/5 my-2 " type="text" placeholder="Enter soil type" />
             <input onChange={(e)=> setCropType(e.target.value)} className="w-3/5 my-2" type="text" placeholder="Enter crop type" />
