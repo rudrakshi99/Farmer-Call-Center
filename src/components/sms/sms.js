@@ -1,9 +1,27 @@
 import PreHeader from "../preheader/preheader";
 import Header from "../Header/Header";
 import Footer from "../Footer/footer";
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 const SmsService = () => {
+  const [number, setNumber] = useState("")
+  const [log, setLog] = useState("")
+  const [load, setLoad] = useState(false)
+  async function onSearchSubmit(term) {
+    setLoad(false)
+    console.log("Clicked");
+    let url = "http://localhost:5000/find_response/+919756611688/"+log
+
+    let value = await fetch(url, {
+      mode: 'no-cors',
+      method: "get",
+    })
+
+    setLoad(true)
+    console.log(value)
+  }
+
   return (
     <>
       <PreHeader />
@@ -13,12 +31,24 @@ const SmsService = () => {
           <div className="container bg-gray-100 p-10 grid place-items-center mt-14  ">
             <p className="text-2xl font-medium text-green-600 my-12">Get your solution via SMS<br /></p>
 
-            <input className="w-3/5 my-2 " type="text" placeholder="Search" />
-            <input className="w-3/5 my-2" type="text" placeholder="Search" />
+            <input onChange={
+              (e) => {
+                setNumber(e.target.value);
+              }
+            } className="w-3/5 my-2 " type="text" placeholder="Enter number to make request from" />
+            <input
+              onChange={
+                (e) => {
+                  setLog(e.target.value);
+                }
+              }
+              className="w-3/5 my-2" type="text" placeholder="Enter log" />
 
             <div className="grid place-items-center mt-14 ">
               <div className="mt-2">
-                <button type="button"
+                <button onClick={
+                  () => onSearchSubmit("aaa")
+                } type="button"
                         className="inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Get
                   Get SMS Support
                 </button>
@@ -28,6 +58,9 @@ const SmsService = () => {
           </div>
 
 
+        </div>
+        <div>
+          {load ? <div className="grid place-items-center my-14  ">loading </div> :<div></div> }
         </div>
       </section>
       <Footer />
