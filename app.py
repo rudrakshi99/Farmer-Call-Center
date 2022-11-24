@@ -93,7 +93,7 @@ def crop_recommedation():
         lang = data.get("lang")
         if lang == None:
             lang = "en"
-        
+        city = translate_text_to_language(city, "en", lang)
 
         try:
             city_info = weather_fetch(city)
@@ -133,6 +133,7 @@ def predict_fertilizer():
 
         soil_type = translate_text_to_language(soil_type, "en", lang)
         crop_type = translate_text_to_language(crop_type, "en", lang)
+        city = translate_text_to_language(city, "en", lang)
         try:
             city_info = weather_fetch(city)
         except Exception:
@@ -211,7 +212,7 @@ def find_response(lang,phone_number,message_body):
                 
                 client = Client(account_sid, auth_token)
                 message = client.messages.create(
-                    body = response + " " + "Abra el siguiente enlace para escuchar la respuesta " +  s3_url,
+                    body = response +  s3_url,
                     from_ = "+15139607276",#"+19452392171", 
                     to = phone_number        
                 )
