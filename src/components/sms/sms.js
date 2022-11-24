@@ -7,18 +7,17 @@ import axios from "axios";
 const SmsService = () => {
   const [number, setNumber] = useState("")
   const [log, setLog] = useState("")
-  const [load, setLoad] = useState(false)
+  const [load, setLoad] = useState(true)
   async function onSearchSubmit(term) {
     setLoad(false)
     console.log("Clicked");
-    let url = "http://localhost:5000/find_response/+919756611688/"+log
+    let url = "http://127.0.0.1:5000/find_response/+919756611688/"+log
 
     let value = await fetch(url, {
-      mode: 'no-cors',
       method: "get",
     })
 
-    setLoad(true)
+    setLoad(false)
     console.log(value)
   }
 
