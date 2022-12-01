@@ -9,6 +9,7 @@ from twilio.rest import Client
 from config import ACCESS_KEY_ID, ACCESS_SECRET_KEY, BUCKET_NAME, config
 from crop_recommendation.corp_prediction import recommend_crop
 from crop_recommendation.weather import weather_fetch
+from disease_classifier.classify_disease import predict_image
 from farmers_log.search_user_request import search_log
 from fertilizier_predict.crop_type_encoder import encode_crop_type
 from fertilizier_predict.decode_fertilizer import decode_fertilizer
@@ -56,6 +57,7 @@ def farmers_log(query = None):
         return response_payload(False, msg= data)
     log = data.get("log")
     lang = data.get("lang")
+    print('Log is : ', log)
     if lang == None:
         lang = "en"
     if not log:
@@ -232,7 +234,32 @@ def find_response(lang,phone_number,message_body):
     except Exception as ex:
         print(ex)
         return jsonify({'message':"Error"})
-        
+
+@app.route('/disease-predict/<lang>', methods=['GET', 'POST'])
+def disease_prediction(lang):
+    if request.method == 'POST':
+        if lang == None:
+            lang = "en"
+
+
+        if 'file' not in request.files:
+            return response_payload(False, 'Please select a file')
+        file = request.files.get('file')
+        if not file:
+            return response_payload(False, 'Please select a file. Make sure there is  file')
+        try:
+            img = file.read()
+
+            prediction = predict_image(img)
+            recommendation_result = {
+                    "prediction": translate_text_to_language(prediction, lang, "en"),
+                }
+            return response_payload(True, recommendation_result, "Success prediction")
+            
+        except Exception as e:
+            print(e)
+            pass
+    return response_payload(False, 'Please try again')     
 
 
 def page_not_found(error):

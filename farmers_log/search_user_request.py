@@ -18,18 +18,25 @@ def search_log(query,tag ="en"):
     }
     search = GoogleSearch(search_params)
     results = search.get_dict()
-    
+    result1 =translate_text_to_language(get_response(results,1),tag)
+    if(result1 == None):
+        result1 =  translate_text_to_language(get_response(results,1+2),tag)
+
+    result2 =translate_text_to_language(get_response(results,2),tag)
+    if(result2 == None):
+        result2 =  translate_text_to_language(get_response(results,2+2),tag)
+
     try:
         answers = {
             "organic_result_1": {
                'title': translate_text_to_language(results["organic_results"][0]["title"],tag),
                 'link': results["organic_results"][0]["link"],
-                'response': translate_text_to_language(get_response(results,1),tag),
+                'response': result1,
             },
             "organic_result_2": {
                'title': translate_text_to_language(results["organic_results"][1]["title"],tag),
                 'link': results["organic_results"][1]["link"],
-                'response': translate_text_to_language(get_response(results,2),tag)
+                'response': result2,
             },
             # "organic_result_3": {
             #    'title': results["organic_results"][2]["title"],
@@ -61,6 +68,7 @@ def search_log(query,tag ="en"):
 
 def get_response(results, index):
     result = scrape_website(results["organic_results"][index]["link"])
+    print(result)
     if result == None:
         return get_description(results, index)
     
