@@ -2,6 +2,10 @@ import { useNavigate } from "react-router-dom";
 import "../../index.css";
 import { Component } from "react";
 import "./body.css";
+import Image from "./voice-message.png"
+import SMS from "./sms.png";
+import Help from "./help-desk.png";
+import Call from "./phone-call.png"
 class CardBar extends Component {
   render() {
     return <section className="body__section my-10">
@@ -16,7 +20,7 @@ class CardBar extends Component {
           <div className="w-1/4 h-full">
             <div
               className="inline-flex flex-col space-y-6 items-center justify-end flex-1 h-full pl-9 pr-8 pt-8 pb-11 bg-white border rounded border-black border-opacity-10">
-              <img className="w-1/5 h-12 rounded-lg" src="https://via.placeholder.com/46x46" />
+              <img className="w-1/5 h-12 rounded-lg" src={Help} />
               <p className="w-56 h-7 text-lg font-semibold text-gray-900">24*7 calls and help desk</p>
               <p className="opacity-70 w-56 h-1/5 text-base text-center">Providing solutions through calls</p>
             </div>
@@ -24,19 +28,20 @@ class CardBar extends Component {
           <div className="w-1/4 h-full">
             <div
               className="inline-flex flex-col space-y-5 items-center justify-end flex-1 h-full pl-12 pr-5 pt-8 pb-11 bg-white border rounded border-black border-opacity-10">
-              <img className="w-14 h-14 rounded-lg" src="https://via.placeholder.com/54x54" />
+              <img className="w-14 h-14 rounded-lg" src={SMS} />
               <p className="w-full h-7 text-lg font-semibold text-gray-900">SMS services for contact</p>
               <p className="opacity-70 w-52 h-1/5 text-base text-center">Send your queries through SMS</p>
             </div>
           </div>
           <div className="w-1/4 h-full">
             <div
-              className="inline-flex flex-col space-y-5 items-end justify-end flex-1 h-full pl-16 pr-10 pt-8 pb-12 bg-white border rounded border-black border-opacity-10">
-              <img className="w-14 h-14 rounded-full" src="https://via.placeholder.com/56x56" />
-              <p className="w-44 h-7 text-lg font-semibold text-gray-900">Voice assistent</p>
-              <p className="opacity-70 w-44 h-1/5 text-base text-center">Get voice assisted solution</p>
+              className="inline-flex flex-col space-y-5 items-center justify-end flex-1 h-full pl-12 pr-5 pt-8 pb-11 bg-white border rounded border-black border-opacity-10">
+              <img className="w-14 h-14 rounded-lg" src={Image} />
+              <p className="w-full h-7 text-lg font-semibold text-gray-900">Voice assistent System</p>
+              <p className="opacity-70 w-52 h-1/5 text-base text-center">Get voice assisted solution</p>
             </div>
           </div>
+
         </div>
       </div>
     </section>;
@@ -55,32 +60,29 @@ class HelpCard extends Component {
       <div className="grid place-items-center mt-14 mb-20">
         <div className="flex space-x-20">
           <div className="flex flex-row m-2">
-            <img className="rounded-lg mr-3" src="https://via.placeholder.com/46x46" />
-
+            <img className="w-14 h-14 rounded-lg mr-4" src={Call} />
             <div className="flex flex-column flex-wrap w-40">
               <p className=""
               >Give krashak a call </p>
-              <p className=""
+              <p className="text-green-600"
               >9876644566</p>
             </div>
           </div>
           <div className="flex flex-row m-2">
-            <img className="rounded-lg mr-3" src="https://via.placeholder.com/46x46" />
-
+            <img className="w-14 h-14 rounded-lg mr-4" src={SMS} />
             <div className="flex flex-column flex-wrap w-40">
               <p className=""
-              >Give krashak a call </p>
-              <p className=""
+              >Drop your query to </p>
+              <p className="text-green-600"
               >9876644566</p>
             </div>
           </div>
           <div className="flex flex-row m-2">
-            <img className="rounded-lg mr-3" src="https://via.placeholder.com/46x46" />
-
+            <img className="w-14 h-14 rounded-lg mr-4" src={Help} />
             <div className="flex flex-column flex-wrap w-40">
               <p className=""
-              >Give krashak a call </p>
-              <p className=""
+              >Use the voice bot</p>
+              <p className="text-green-600"
               >9876644566</p>
             </div>
           </div>
@@ -94,12 +96,12 @@ const Body = () => {
   const navigate = useNavigate();
   return (
     <div className="body">
-      <div className="background-image grid place-items-center my-14">
+      <div className="background-image grid place-items-center my-6">
         <div className="">
-          <p className="text-sm  font-bold text-center text-white uppercase mb-4">Farmers' Help Center</p>
-          <p className="text-3xl font-medium text-center text-green-600 max-w-md mb-4">KRASHAK
+          <p className="text-xl  font-bold text-center text-white uppercase mb-4">Farmers' Help Center</p>
+          <p className="text-6xl font-medium text-center text-green-600 max-w-md mb-4">KRASHAK
           </p>
-          <p className="text-sm font-bold text-center text-white uppercase">#WeAreFarmers'Voice</p>
+          <p className="text-xl font-bold text-center text-white uppercase">#WeAreFarmers'Voice</p>
 
         </div>
         </div>
