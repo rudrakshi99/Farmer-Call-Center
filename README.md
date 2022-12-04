@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Krashak.AI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+AI-based voice-assisted Contact Center for assisting Farmers for their problems. Farmers can log their problems with the contact center thru phone calls / SMS / website and in return an automated voice response can be provided to the farmers with a most appropriate solution for their problems.
 
-## Available Scripts
+# UNESCO India - Africa Hackathon
 
-In the project directory, you can run:
+<p align="center"><img src="https://user-images.githubusercontent.com/55245862/205508044-e43024b4-3c92-4ab9-9f6b-e3c6038205a6.jpg" height="200" width="300"></p>
 
-### `npm start`
+# Problem Statement (AGRI12)
+AI-based voice-assisted Contact Center for assisting Farmers for their problems. Farmers can log their problems with the contact center thru phone calls / SMS / website and in return an automated voice response can be provided to the farmers with a most appropriate solution for their problems.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technology Stack:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<img src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/> <img src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/> <img src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/> <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"/>  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>  <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white"/>  <img src="https://img.shields.io/badge/markdown-%23000000.svg?&style=for-the-badge&logo=markdown&logoColor=white"/><img src="https://img.shields.io/badge/github%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/> 
 
-### `npm test`
+- **Frontend**: React
+- **Backend**: Flask
+- **IDE**: VS Code
+- **Design**: Figma, Canva
+- **API Testing & Documentation**: Postman
+- **Version Control**: Git and GitHub
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### How to Get Started?
 
-### `npm run build`
+#### GitHub Repository Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| S.No. | Branch Name                                                                  | Purpose                       |
+| ----- | ---------------------------------------------------------------------------- | ----------------------------- |
+| 1.    | [master](https://github.com/rudrakshi99/Farmer-Call-Center/tree/master)      | contains all Frontend code    |
+| 2.    | [backend](https://github.com/rudrakshi99/Farmer-Call-Center/tree/backend)    | contains all Backend code     |
+| 3.    | [ml](https://github.com/rudrakshi99/Farmer-Call-Center/tree/ml)              | contains all ML code          |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Frontend Setup Instructions
 
-### `npm run eject`
+- Fork and Clone the repo using
+```
+$ git clone https://github.com/rudrakshi99/Farmer-Call-Center
+```
+- Install the Dependencies from `npm`
+```
+$ npm i
+```
+- Run the Server and see the demo at [http://localhost:3000/](http://localhost:3000/)
+```
+$ npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Team Members:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| S.No. | Name | Role | GitHub Username:octocat: |
+| --------------- | --------------- | --------------- | --------------- |
+| 1. | Rudrakshi (Team Leader) | Backend Development| [@rudrakshi99](https://github.com/rudrakshi99)  |
+| 2. | Frank Makeba | Frontend Development | [@CutCoders](https://github.com/CutCoders) |
+| 3. | Tony Onkgopotse Richard | Backend Development | [@Onkgopotse007](https://github.com/Onkgopotse007) |
+| 4. | Pedro Anda Ondo Nchama | Backend Development| [@paondonchama](https://github.com/paondonchama)  |
+| 5. | Faremi Saheed | ML Enhgineer | [@faremi](https://github.com/faremi)  |
+| 6. | Ayushi Saxena | Product Designer | [@ayushisaxena19](https://github.com/ayushisaxena19)  |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Maintainers✨
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<table>
+  <tbody><tr>
+    <td align="center"><a href="https://github.com/rudrakshi99"><img alt="" src="https://avatars.githubusercontent.com/rudrakshi99" width="100px;"><br><sub><b>Rudrakshi</b></sub></a><br><a href="https://github.com/rudrakshi99/Farmer-Call-Center/commits/backend?author=rudrakshi99" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/faremi"><img alt="" src="https://avatars.githubusercontent.com/faremi" width="100px;"><br><sub><b>Faremi Saheed </b></sub></a><br><a href="https://github.com/rudrakshi99/Farmer-Call-Center/commits/backend?author=faremi" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/paondonchama"><img alt="" src="https://avatars.githubusercontent.com/paondonchama" width="100px;"><br><sub><b>Pedro Anda Ondo Nchama </b></sub></a><br><a href="https://github.com/rudrakshi99/Farmer-Call-Center/commits/backend?author=paondonchama" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Onkgopotse007"><img alt="" src="https://avatars.githubusercontent.com/Onkgopotse007" width="100px;"><br><sub><b>Tony Onkgopotse Richard </b></sub></a><br><a href="https://github.com/rudrakshi99/Farmer-Call-Center/commits/call_api?author=Onkgopotse007" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ayushisaxena19"><img alt="" src="https://avatars.githubusercontent.com/ayushisaxena19" width="100px;"><br><sub><b>Ayushi Saxena  </b></sub></a><br><a href="https://github.com/rudrakshi99/Farmer-Call-Center" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/CutCoders"><img alt="" src="https://avatars.githubusercontent.com/CutCoders" width="100px;"><br><sub><b>Frank Makeba </b></sub></a><br><a href="https://github.com/rudrakshi99/Farmer-Call-Center/commits/master?author=CutCoders" title="Code">💻</a></td>
+  </tr>
+</tbody></table>
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# License :memo:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project follows the [MIT License](https://choosealicense.com/licenses/mit/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[![Uses Git](https://forthebadge.com/images/badges/uses-git.svg)](https://github.com/rudrakshi99/Jan-Dhan-Darshak) 
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://github.com/rudrakshi99/Jan-Dhan-Darshak)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://github.com/rudrakshi99/Jan-Dhan-Darshak)
+[![Built with love](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/rudrakshi99/Jan-Dhan-Darshak.git) [![Built By Developers](https://forthebadge.com/images/badges/built-by-developers.svg)](https://github.com/rudrakshi99/Jan-Dhan-Darshak) 
