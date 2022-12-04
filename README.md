@@ -35,7 +35,7 @@ AI-based voice-assisted Contact Center for assisting Farmers for their problems.
 
 - Fork and Clone the repo using
 ```
-$ git clone https://github.com/rudrakshi99/Farmer-Call-Center
+$ git clone https://github.com/rudrakshi99/Farmer-Call-Center.git
 ```
 - Install the Dependencies from `npm`
 ```
@@ -50,7 +50,7 @@ $ npm start
 
 | S.No. | Name | Role | GitHub Username:octocat: |
 | --------------- | --------------- | --------------- | --------------- |
-| 1. | Rudrakshi (Team Leader) | Backend Development| [@rudrakshi99](https://github.com/rudrakshi99)  |
+| 1. | Rudrakshi (Team Leader) | Frontend Development| [@rudrakshi99](https://github.com/rudrakshi99)  |
 | 2. | Frank Makeba | Frontend Development | [@CutCoders](https://github.com/CutCoders) |
 | 3. | Tony Onkgopotse Richard | Backend Development | [@Onkgopotse007](https://github.com/Onkgopotse007) |
 | 4. | Pedro Anda Ondo Nchama | Backend Development| [@paondonchama](https://github.com/paondonchama)  |
@@ -61,7 +61,7 @@ $ npm start
 
 <table>
   <tbody><tr>
-    <td align="center"><a href="https://github.com/rudrakshi99"><img alt="" src="https://avatars.githubusercontent.com/rudrakshi99" width="100px;"><br><sub><b>Rudrakshi</b></sub></a><br><a href="https://github.com/rudrakshi99/Farmer-Call-Center/commits/backend?author=rudrakshi99" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/rudrakshi99"><img alt="" src="https://avatars.githubusercontent.com/rudrakshi99" width="100px;"><br><sub><b>Rudrakshi</b></sub></a><br><a href="https://github.com/rudrakshi99/Farmer-Call-Center/commits/master?author=rudrakshi99" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/faremi"><img alt="" src="https://avatars.githubusercontent.com/faremi" width="100px;"><br><sub><b>Faremi Saheed </b></sub></a><br><a href="https://github.com/rudrakshi99/Farmer-Call-Center/commits/backend?author=faremi" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/paondonchama"><img alt="" src="https://avatars.githubusercontent.com/paondonchama" width="100px;"><br><sub><b>Pedro Anda Ondo Nchama </b></sub></a><br><a href="https://github.com/rudrakshi99/Farmer-Call-Center/commits/backend?author=paondonchama" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Onkgopotse007"><img alt="" src="https://avatars.githubusercontent.com/Onkgopotse007" width="100px;"><br><sub><b>Tony Onkgopotse Richard </b></sub></a><br><a href="https://github.com/rudrakshi99/Farmer-Call-Center/commits/call_api?author=Onkgopotse007" title="Code">💻</a></td>
