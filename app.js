@@ -1,6 +1,11 @@
+import fetch from 'node-fetch'
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 const WebSocket = require('ws')
 const express = require('express')
 const app =express()
+
+let finalMessage=''
 app.use(express.urlencoded({ extended: true }))
 const server = require('http').createServer(app)
 const wss =new WebSocket.Server({server})
@@ -29,25 +34,29 @@ wss.on('connection',(ws)=>{
             case 'start':
                 console.log('Start media stream')
                 recognizeStream = client
-          .streamingRecognize(request)
-          .on("error", console.error)
-          .on("data", (data) => {
-            console.log(data.results[0].alternatives[0].transcript);
-            wss.clients.forEach((client) => {
-              if (client.readyState === WebSocket.OPEN) {
-                client.send(
-                  JSON.stringify({
-                    event: "interim-transcription",
-                    text: data.results[0].alternatives[0].transcript,
-                  })
-                );
-              }
-            });
-          });
-                break;
+                .streamingRecognize(request)
+                .on("error", console.error)
+                .on("data", (data) => {
+                    console.log(data.results[0].alternatives[0].transcript);
+                    wss.clients.forEach((client) => {
+                    if (client.readyState === WebSocket.OPEN) {
+                        client.send(
+                        JSON.stringify({
+                            event: "interim-transcription",
+                            text: data.results[0].alternatives[0].transcript,
+                        })
+                        );
+                    }
+                    });
+                    finalMessage=data.results[0].alternatives[0].transcript
+
+                });
+                
+            break;
             case 'media':
                 // console.log('Receiving media stream')
                 recognizeStream.write(msg.media.payload);
+                // finalMessage=recognizeStream.write(msg.media.payload)
                 break;
             case 'stop':
                 console.log('Call ended')
@@ -64,30 +73,14 @@ app.post('/',(req,res)=>{
         <Stream url='wss://${req.headers.host}' />
         </Start>
         <Say>Welcome to Krashak dot AI please leave a query and wait for a while as we process it.</Say> 
-        
-       <Pause length='60' />
+       <Pause length='15' />
+       <Say>
+
+       </Say>
     </Response>`
   );
 })
-app.post('/setlanguage',(req,res)=>{
-    const userInput = req.body.Digits
 
-    switch (userInput) {
-        case 1:
-            transcriptionLanguage='en-GB'
-            break;
-        case 2:
-            transcriptionLanguage='es-ES'
-            break;
-        case 3:
-            transcriptionLanguage='hi-IN'
-            break;
-    
-        default:
-            transcriptionLanguage='en-GB'
-            break;
-    }
-})
 
 
 server.listen(8080)
