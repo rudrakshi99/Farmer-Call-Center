@@ -22,8 +22,8 @@ AI-based voice-assisted Contact Center for assisting Farmers for their problems.
 
 
 ## DATA SOURCE 📊
-- [Crop recommendation dataset ](https://www.kaggle.com/atharvaingle/crop-recommendation-dataset) (custom built dataset)
-- [Fertilizer suggestion dataset](https://github.com/Gladiator07/Harvestify/blob/master/Data-processed/fertilizer.csv) (custom built dataset)
+- [Crop recommendation dataset ](https://www.kaggle.com/atharvaingle/crop-recommendation-dataset) 
+- [Fertilizer suggestion dataset](https://www.kaggle.com/datasets/gdabhishek/fertilizer-prediction) 
 - [Disease detection dataset](https://www.kaggle.com/vipoooool/new-plant-diseases-dataset)
 
 ## Notebooks 📓
