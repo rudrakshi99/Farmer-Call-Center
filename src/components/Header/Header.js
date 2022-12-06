@@ -18,7 +18,7 @@ const Header = () => {
           />
           <h3 className="text-md font-bold opacity-[.70]">Krashak.AI</h3>
         </div>
-        <div className="flex-2 w-5/12 mx-auto">
+        <div className="flex-2 w-6/12 mx-auto">
           <ul className="flex mt-4 items-around">
             <li
               onClick={() => navigate("/")}
@@ -43,6 +43,18 @@ const Header = () => {
               className="text-sm cursor-pointer font-semibold text-[#219653] hover:opacity-90 ml-6 mr-1.5"
             >
               Fertilizer Recommendation
+            </li>
+            <li
+              onClick={() => navigate("/fertilizer")}
+              className="text-sm cursor-pointer font-semibold text-[#219653] hover:opacity-90 ml-6 mr-1.5"
+            >
+              Disease Prediction
+            </li>
+            <li
+              onClick={() => navigate("/sms")}
+              className="text-sm cursor-pointer font-semibold text-[#219653] hover:opacity-90 ml-6 mr-1.5"
+            >
+              SMS Service
             </li>
           </ul>
         </div>

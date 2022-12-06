@@ -36,32 +36,35 @@ const Footer = () => {
                 Home
               </li>
               {/* <li className='text-lg text-white font-medium cursor-pointer'>Menu</li> */}
-              <li className="text-lg text-white font-medium cursor-pointer">
-                Market
+              <li
+                className="text-lg text-white font-medium cursor-pointer"
+                onClick={() => navigate("/sms")}
+              >
+                SMS Service
               </li>
             </ul>
             <ul>
               <li
                 className="text-lg text-white font-bold cursor-pointer"
-                onClick={() => navigate("/support-center")}
+                onClick={() => navigate("/fertilizer")}
               >
                 Fertilizer Prediction
               </li>
               <li
                 className="text-lg text-white font-medium cursor-pointer"
-                onClick={() => navigate("help")}
+                onClick={() => navigate("/crop")}
               >
                 Crop Prediction
               </li>
               <li
                 className="text-lg text-white font-medium cursor-pointer"
-                onClick={() => navigate("/partner-dispute")}
+                onClick={() => navigate("/voice")}
               >
                 Weather Prediction
               </li>
               <li
                 className="text-lg text-white font-medium cursor-pointer"
-                onClick={() => navigate("faq")}
+                onClick={() => navigate("/voice")}
               >
                 Disease Prediction
               </li>
@@ -70,7 +73,7 @@ const Footer = () => {
           <p className="text-md text-medium text-white mt-4">
             Please provide us Feedback{" "}
             <button
-              onClick={() => navigate("/feedback")}
+              onClick={() => navigate(this.props.feedback)}
               className="text-xl underline"
             >
               HERE
