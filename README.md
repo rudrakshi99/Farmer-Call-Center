@@ -28,6 +28,7 @@ AI-based voice-assisted Contact Center for assisting Farmers for their problems.
 
 ## Notebooks 📓
 - [Crop Recommendation](https://www.kaggle.com/atharvaingle/what-crop-to-grow)
+- [Fertilizer Prediction](https://github.com/rudrakshi99/Farmer-Call-Center/blob/ml/notebook/geeks-on-fire-fertiliser-prediction.ipynb)
 - [Disease Detection](https://www.kaggle.com/atharvaingle/plant-disease-classification-resnet-99-2)
 
 
