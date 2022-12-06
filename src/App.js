@@ -1,11 +1,11 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Voice from "./components/voice/voice";
-import Fertilizer from "./components/fertilizer/fertilizer";
-import Crop from "./components/crop/crop";
-import SmsService from "./components/sms/sms";
-import Disease from "./components/disease/disease";
+import Voice from "./pages/voice/voice";
+import Fertilizer from "./pages/fertilizer/fertilizer";
+import Crop from "./pages/crop/crop";
+import SmsService from "./pages/sms/sms";
+import Disease from "./pages/disease/disease";
 function App() {
   return (
     <>

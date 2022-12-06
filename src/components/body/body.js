@@ -2,10 +2,11 @@ import { useNavigate } from "react-router-dom";
 import "../../index.css";
 import { Component } from "react";
 import "./body.css";
-import Image from "./voice-message.png";
-import SMS from "./sms.png";
-import Help from "./help-desk.png";
-import Call from "./phone-call.png";
+import Image from "../img/voice-message.png";
+import SMS from "../img/sms.png";
+import Help from "../img/help-desk.png";
+import Call from "../img/phone-call.png";
+import FeatureImg from "../img/feature.jpeg";
 
 class CardBar extends Component {
   render() {
@@ -139,7 +140,7 @@ const Body = () => {
             Take a look at our features
           </p>
         </div>
-        <img src="home_image.jpeg"></img>
+        <img src={FeatureImg}></img>
       </section>
     </div>
   );

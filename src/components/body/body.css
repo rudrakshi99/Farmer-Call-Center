@@ -1,8 +1,8 @@
 .background-image {
-  background-image: url("Vector.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 80vh;
-  width: 100vw;
+    background-image: url("../img/home-img.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 80vh;
+    width: 100vw;
 }

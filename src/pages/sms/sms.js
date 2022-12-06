@@ -1,6 +1,6 @@
-import PreHeader from "../preheader/preheader";
-import Header from "../Header/Header";
-import Footer from "../Footer/footer";
+import PreHeader from "../../components/preheader/preheader";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/footer";
 import React, { useState } from "react";
 
 const SmsService = () => {
