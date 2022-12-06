@@ -15,7 +15,7 @@ const Body = () => {
           <p className="text-6xl font-medium text-center text-green-600 max-w-md mb-4">
             KRASHAK.AI
           </p>
-          <p className="text-2xl font-bold text-center text-white uppercase">
+          <p className="text-2xl font-bold text-center text-white">
             #WeAreFarmers'Voice
           </p>
         </div>
