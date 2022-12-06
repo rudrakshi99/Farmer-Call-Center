@@ -65,7 +65,7 @@ $ npm start
 | 2. | Frank Makeba | Frontend Development | [@CutCoders](https://github.com/CutCoders) |
 | 3. | Tony Onkgopotse Richard | Backend Development | [@Onkgopotse007](https://github.com/Onkgopotse007) |
 | 4. | Pedro Anda Ondo Nchama | Backend Development| [@paondonchama](https://github.com/paondonchama)  |
-| 5. | Faremi Saheed | ML Enhgineer | [@faremi](https://github.com/faremi)  |
+| 5. | Faremi Saheed | ML Engineer | [@faremi](https://github.com/faremi)  |
 | 6. | Ayushi Saxena | Product Designer | [@ayushisaxena19](https://github.com/ayushisaxena19)  |
 
 ## Maintainers✨
