@@ -24,7 +24,7 @@ class CardBar extends Component {
             <div className="w-1/4 h-full">
               <div className="inline-flex flex-col space-y-6 items-center justify-end flex-1 h-full pl-9 pr-8 pt-8 pb-11 bg-white border rounded border-black border-opacity-10">
                 <img className="w-1/5 h-12 rounded-lg" src={Help} />
-                <p className="w-56 h-7 text-lg font-semibold text-gray-900">
+                <p className="w-56 h-7 text-lg font-semibold text-gray-900 text-center">
                   24*7 calls and help desk
                 </p>
                 <p className="opacity-70 w-56 h-1/5 text-base text-center">
@@ -33,9 +33,9 @@ class CardBar extends Component {
               </div>
             </div>
             <div className="w-1/4 h-full">
-              <div className="inline-flex flex-col space-y-5 items-center justify-end flex-1 h-full pl-12 pr-5 pt-8 pb-11 bg-white border rounded border-black border-opacity-10">
+              <div className="inline-flex flex-col space-y-6 items-center justify-end flex-1 h-full pl-9 pr-8 pt-8 pb-11 bg-white border rounded border-black border-opacity-10">
                 <img className="w-14 h-14 rounded-lg" src={SMS} />
-                <p className="w-56 h-7 text-lg font-semibold text-gray-900">
+                <p className="w-56 h-7 text-lg font-semibold text-gray-900 text-center">
                   SMS services for contact
                 </p>
                 <p className="opacity-70 w-56 h-1/5 text-base text-center">
@@ -44,9 +44,9 @@ class CardBar extends Component {
               </div>
             </div>
             <div className="w-1/4 h-full">
-              <div className="inline-flex flex-col space-y-5 items-center justify-end flex-1 h-full pl-12 pr-5 pt-8 pb-11 bg-white border rounded border-black border-opacity-10">
+              <div className="inline-flex flex-col space-y-6 items-center justify-end flex-1 h-full pl-9 pr-8 pt-8 pb-11 bg-white border rounded border-black border-opacity-10">
                 <img className="w-14 h-14 rounded-lg" src={Image} />
-                <p className="w-56 h-7 text-lg font-semibold text-gray-900">
+                <p className="w-56 h-7 text-lg font-semibold text-gray-900 text-center">
                   Voice assistent System
                 </p>
                 <p className="opacity-70 w-56 h-1/5 text-base text-center">

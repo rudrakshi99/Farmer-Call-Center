@@ -45,7 +45,7 @@ const Header = () => {
               Fertilizer Recommendation
             </li>
             <li
-              onClick={() => navigate("/fertilizer")}
+              onClick={() => navigate("/disease")}
               className="text-sm cursor-pointer font-semibold text-[#219653] hover:opacity-90 ml-6 mr-1.5"
             >
               Disease Prediction

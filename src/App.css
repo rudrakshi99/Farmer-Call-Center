@@ -13,3 +13,9 @@ h1 {
 p {
     font-family: "Sora", sans-serif;
 }
+
+input {
+    font-family: "Sora", sans-serif;
+    padding: 0.2rem 1rem;
+    font-size: 1.3rem;
+}

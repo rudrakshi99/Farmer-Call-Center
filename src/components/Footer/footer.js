@@ -64,7 +64,7 @@ const Footer = () => {
               </li>
               <li
                 className="text-lg text-white font-medium cursor-pointer"
-                onClick={() => navigate("/voice")}
+                onClick={() => navigate("/disease")}
               >
                 Disease Prediction
               </li>
