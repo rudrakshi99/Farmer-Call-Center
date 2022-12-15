@@ -1,4 +1,6 @@
 # Krashak.AI
+![Hackathon (1)](https://user-images.githubusercontent.com/55245862/207862876-206c15db-49e8-4a2b-9d11-8ee414088474.png)
+
 > Problem Statement (AGRI12)
 
 
