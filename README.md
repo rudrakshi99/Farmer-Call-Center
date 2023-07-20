@@ -17,9 +17,9 @@ AI-based voice-assisted Contact Center for assisting Farmers for their problems.
 3. Crop Recommendation
 4. Fertilizer Recommendation
 5. Disease Prediction
-6. Weather Forcasting
+6. Weather Forecasting
 7. AI Voice Assistance
-8. Voice SMS in local language
+8. Voice SMS in the local language
 
 
 ## Technology Stack:
@@ -88,7 +88,7 @@ $ npm start
 
 This project follows the [MIT License](https://choosealicense.com/licenses/mit/).
 
-[![Uses Git](https://forthebadge.com/images/badges/uses-git.svg)](https://github.com/rudrakshi99/Jan-Dhan-Darshak) 
-[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://github.com/rudrakshi99/Jan-Dhan-Darshak)
-[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://github.com/rudrakshi99/Jan-Dhan-Darshak)
-[![Built with love](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/rudrakshi99/Jan-Dhan-Darshak.git) [![Built By Developers](https://forthebadge.com/images/badges/built-by-developers.svg)](https://github.com/rudrakshi99/Jan-Dhan-Darshak) 
+[![Uses Git](https://forthebadge.com/images/badges/uses-git.svg)](https://github.com/rudrakshi99/Farmer-Call-Center) 
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://github.com/rudrakshi99/Farmer-Call-Center)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://github.com/rudrakshi99/Farmer-Call-Center)
+[![Built with love](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/rudrakshi99/Farmer-Call-Center.git) [![Built By Developers](https://forthebadge.com/images/badges/built-by-developers.svg)](https://github.com/rudrakshi99/Farmer-Call-Center) 
