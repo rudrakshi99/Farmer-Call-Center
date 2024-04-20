@@ -16,7 +16,7 @@ const Header = () => {
             className="logoWeb"
             alt=""
           />
-          <h3 className="text-md font-bold opacity-[.70]">Krashak.AI</h3>
+          <h3 className="text-md font-bold opacity-[.70]">HURUDZA.AI</h3>
         </div>
         <div className="flex-2 w-6/12 mx-auto">
           <ul className="flex mt-4 items-around">
